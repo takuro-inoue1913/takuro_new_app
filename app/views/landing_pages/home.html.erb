@@ -1,2 +1,10 @@
-<h1>LandingPages#home</h1>
-<p>Find me in app/views/landing_pages/home.html.erb</p>
+<div class="center jumbotron">
+  <h1><span>お母さん...</span><br>今日の晩ご飯、なに？</h1>
+
+  <h2>
+    我が家の料理をシェアしよう！
+  </h2>
+  <%= link_to image_tag("ikicchin19.png", alt: "料理している動物", id: "animal_image") %>
+  <%= link_to "始めてみる！", '#', class: "btn btn-primary btn-lg", id: "signin-btn" %>
+  <p><%= link_to "Facebookでログインする", "#", class: "btn btn-secondary btn-lg login_facebook"  %></p>
+</div>
