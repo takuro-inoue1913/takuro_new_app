@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'landing_pages/home'
-  get 'landing_pages/help'
-  get 'landing_pages/about'
+  root 'landing_pages#home'
+  
+  get '/help',    to: 'landing_pages#help'
+  get '/about',   to: 'landing_pages#about'
+  get '/contact', to: 'landing_pages#contact'
 
-   root 'application#hello'
+ root 'application#hello'
 end
