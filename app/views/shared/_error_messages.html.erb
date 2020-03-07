@@ -1,12 +1,13 @@
 <% if @user.errors.any? %>
    <div id="error_explanation">
     <div class="alert alert-danger">
-     <%= pluralize(@user.errors.count, "個の入力ミスがあります") %>
+      <% errors = @user.errors.count %>
+      <%= "#{errors}個の入力ミスがあります。" %>
     </div>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
    </div>
 <% end %>
