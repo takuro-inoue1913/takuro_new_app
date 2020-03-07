@@ -218,3 +218,27 @@ aside {
 .gravatar_edit {
   margin-top: 15px;
 }
+
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+label {
+  margin-left: 10px;
+}
+
+
+form#new_user {
+  padding: 0 80px;
+}
+
+
+input {
+  height: auto !important;
+}
