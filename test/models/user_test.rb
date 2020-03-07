@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   
   def setup
-    @user = User.new(name: "Foobar", email: "sample@foobar.com",
+    @user = User.new(name: "Foobar", email: "sample@foobar.com", username: "Foobar2",
                      password: "hogehoge", password_confirmation: "hogehoge")
   end
   
@@ -19,6 +19,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  test "username should be present" do
+    @user.username = "  "
+    assert_not @user.valid?
+  end
   
    test "email should be present" do
     @user.email = "  "
@@ -30,6 +34,14 @@ class UserTest < ActiveSupport::TestCase
     # 最大30文字
     assert_not @user.valid?
   end
+  
+  
+  test "testing username length" do
+    @user.username = "a" * 31
+    # 最大30文字
+    assert_not @user.valid?
+  end
+  
   
   test "testing email length" do
     @user.email = "a" * 188 + "@hogehoge.com"
