@@ -1,7 +1,7 @@
 <% if @user.errors.any? %>
    <div id="error_explanation">
     <div class="alert alert-danger">
-     <%= pluralize(@user.errors.count, "error") %>.
+     <%= pluralize(@user.errors.count, "個の入力ミスがあります") %>.
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
