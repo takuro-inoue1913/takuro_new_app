@@ -3,7 +3,8 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   
   def setup
-    @user = User.new(name: "Foobar", email: "sample@foobar.com")
+    @user = User.new(name: "Foobar", email: "sample@foobar.com",
+                     password: "hogehoge", password_confirmation: "hogehoge")
   end
   
   
@@ -67,5 +68,19 @@ class UserTest < ActiveSupport::TestCase
     @user.email = mixed_case_email
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
+  end
+  
+  test "empty password" do
+    @user.password              = " " * 6
+    @user.password_confirmation = " " * 6
+    # passwordの空入力
+    assert_not @user.valid?
+  end
+  
+  test "minimum password length" do
+    @user.password              = "a" * 5
+    @user.password_confirmation = "a" * 5
+    # passwordの最小入力数
+    assert_not @user.valid?
   end
 end
