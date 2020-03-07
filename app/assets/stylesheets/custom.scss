@@ -90,9 +90,20 @@ img#animal_image {
     margin-left: 30px;
 }
 
+p img {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-top: 0;
+  margin-left: 30px;
+} 
+
 p a.login_facebook {
   margin-top: 30px;
   color: #FF8856;
+  padding-left: 0;
+  padding-top: 30px;
+  display: inline-block;
 }
 
 
