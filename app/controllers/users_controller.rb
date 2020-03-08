@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "登録が完了しました！早速写真を投稿してみましょう！"
       redirect_to user_path(@user)
     else
       render 'new'
