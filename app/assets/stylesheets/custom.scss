@@ -231,6 +231,8 @@ aside {
 }
 
 
+
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -245,8 +247,14 @@ label {
 }
 
 
-form#new_user {
+form#new_user,
+div#login-form {
   padding: 0 80px;
+}
+
+div p#no-login {
+  margin-top: 10px;
+  color: gray;
 }
 
 
