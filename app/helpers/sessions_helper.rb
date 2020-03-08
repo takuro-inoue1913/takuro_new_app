@@ -10,4 +10,9 @@ module SessionsHelper
          # cookiesに一時的に保存
      end
   end
+  
+  def logged_in?
+      !current_user.nil?
+       # ログインしていたらture,していなかったらfalseを返す
+  end
 end
