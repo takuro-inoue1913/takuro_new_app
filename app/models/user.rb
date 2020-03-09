@@ -36,8 +36,10 @@ class User < ApplicationRecord
       update_attribute(:remember_digest, User.digest(remember_token))
   end
   
-  
+   # remember_tokenとremember_digest(model)の認証
   def authenticated?
       BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
+  
+  
 end
