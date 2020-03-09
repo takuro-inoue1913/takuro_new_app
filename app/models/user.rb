@@ -30,9 +30,14 @@ class User < ApplicationRecord
   end
   
   
-  
+   # ハッシュ値をデータベースに保存
   def remember
       self.remember_token = User.new_token
       update_attribute(:remember_digest, User.digest(remember_token))
+  end
+  
+  
+  def authenticated?
+      BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 end
