@@ -37,8 +37,9 @@ class User < ApplicationRecord
   end
   
    # remember_tokenとremember_digest(model)の認証
-  def authenticated?
-      BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
   
    # ユーザー情報を忘れる
