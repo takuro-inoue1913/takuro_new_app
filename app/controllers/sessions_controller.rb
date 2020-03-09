@@ -17,8 +17,11 @@ class SessionsController < ApplicationController
     end
   end
   
+  
+  
   def destroy
-    log_out
+    log_out if logged_in?
+    # current_userがnilになるのを防ぐ
     redirect_to root_url
   end
   
