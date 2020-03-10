@@ -25,6 +25,20 @@
         <%= f.label :phone_number, "電話番号" %>
         <%= f.text_field :phone_number, class: "form_control" %>
         
+        <div class="form-group row">
+          <div class="col-sm-2">
+            <%= f.label :sex, '性別', class: "form-label" %>
+          </div>
+         <div class="col-sm-10 btn-group" data-toggle="buttons">
+            <label class="btn btn-outline-secondary active" style="width:50%">
+              <%= f.radio_button :sex, 0, {checked: true} %> 男性
+            </label>
+            <label class="btn btn-outline-secondary" style="width:50%">
+              <%= f.radio_button :sex, 1, {} %> 女性
+           </label>
+         </div>
+</div>
+        
         <%= f.label :password %>
         <%= f.password_field :password, class: "form_control" %>
         
