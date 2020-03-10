@@ -4,9 +4,8 @@ class UserTest < ActiveSupport::TestCase
   
   def setup
     @user = User.new(name: "Foobar", email: "sample@foobar.com", username: "Foobar2",
-                     password: "hogehoge", password_confirmation: "hogehoge")
+                     password: "hogehoge", password_confirmation: "hogehoge", phone_number: "09012345678")
   end
-  
   
   
   
@@ -14,6 +13,7 @@ class UserTest < ActiveSupport::TestCase
     assert @user.valid?
   end
   
+
   test "name should be present" do
     @user.name = "  "
     assert_not @user.valid?
@@ -29,6 +29,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  
+   test "phone number test" do
+     @user.phone_number = "12345678900"
+     assert_not @user.valid?
+   end
+  
+  
   test "testing name length" do
     @user.name = "a" * 31
     # 最大30文字
@@ -41,8 +48,8 @@ class UserTest < ActiveSupport::TestCase
     # 最大30文字
     assert_not @user.valid?
   end
-  
-  
+   
+   
   test "testing email length" do
     @user.email = "a" * 188 + "@hogehoge.com"
     # 最大200文字
@@ -55,7 +62,7 @@ class UserTest < ActiveSupport::TestCase
     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
       assert_not @user.valid?, "#{invalid_address.inspect}を有効にしてください"
-    end
+   end
   end
   
   test "test not valid email" do
