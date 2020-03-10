@@ -7,6 +7,8 @@ class User < ApplicationRecord
     
     validates :username,  presence: true, length:{ maximum: 30 }
     
+    validates :self_introduction, length:{ maximum: 300 }
+    
     validates :phone_number, format: { with: /\A0[7-9]0-?\d{4}-?\d{4}\z/ }, allow_nil: true
     
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
