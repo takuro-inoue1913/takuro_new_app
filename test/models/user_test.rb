@@ -56,6 +56,14 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  
+  test "testing self_introduction length" do
+    @user.self_introduction = "a" * 301
+    # 最大300文字
+    assert_not @user.valid?
+  end
+  
+  
   test "test valid email" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz.com]
