@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_users, only: [:edit, :update]
   
   def show
     @user = User.find(params[:id])
@@ -45,6 +46,13 @@ class UsersController < ApplicationController
                                   :password, :password_confirmation,
                                   :webpage , :self_introduction,
                                   :phone_number, :sex)
+   end
+   
+   def logged_in_users
+     if not logged_in?
+       flash[:danger] = "ログインしてください。"
+       redirect_to login_url
+     end
    end
    
 end
