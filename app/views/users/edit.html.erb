@@ -37,13 +37,13 @@
               <%= f.radio_button :sex, 1, {} %> 女性
            </label>
          </div>
-</div>
+        </div>
         
         <%= f.label :password %>
         <%= f.password_field :password, class: "form_control" %>
         
         <%= f.label :password_confirmation %>
-        <%= f.text_field :password_confirmation, class: "form_control" %>
+        <%= f.password_field :password_confirmation, class: "form_control" %>
         
         <%= f.submit "変更する！", class: "btn btn-warning btn-lg" %>
         <% end %>
