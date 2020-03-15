@@ -30,13 +30,13 @@ class UsersController < ApplicationController
   
   
   def edit
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
   end
   
   
   
   def update
-    @user = User.find_by (params[:id])
+    @user = User.find(params[:id])
      if @user.update_attributes(user_params)
        flash[:success] = "プロフィールの更新が完了しました！"
        redirect_to @user
