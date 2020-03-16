@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   root 'landing_pages#home'
   
   get '/help',    to: 'landing_pages#help'
