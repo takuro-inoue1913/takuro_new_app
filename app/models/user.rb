@@ -40,12 +40,16 @@ class User < ApplicationRecord
       update_attribute(:remember_digest, User.digest(remember_token))
   end
   
-   # remember_tokenとremember_digest(model)の認証
+  
+  
+  # トークンがダイジェストと一致したらtrueを返す
   def authenticated?(attribute, token)
-    digest = self.send("#{attribute}_digest")
+    digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
+  
+  
   
   # ユーザーのログイン情報を破棄する
   def forget
