@@ -8,9 +8,16 @@ class SessionsController < ApplicationController
                         username: params[:session][:username])
                         
     if user && user.authenticate(params[:session][:password])
-      log_in user
+      if user.activated?
+        log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_back_or user
+      else
+        message = "アカウントが有効化されていません"
+        message += "送られているEmailを確認し、リンクをクリックしてください"
+        flash[:warning] = massage
+        redirect_to root_url
+      end
     else
       flash.now[:danger] = 'User name, email, password いずれかが間違っています。'
       render 'new'
