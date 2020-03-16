@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "登録が完了しました！早速写真を投稿してみましょう！"
+      flash[:info] = "入力されたアドレスにMailを送りました。Mailのリンクをクリックして登録完了してください"
       redirect_to root_url
     else
       render 'new'
