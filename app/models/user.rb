@@ -80,9 +80,10 @@ class User < ApplicationRecord
   
   
   # パスワードリセット用のメールを送信
-  def send_activation_email
+  def send_password_reset_email
     UserMailer.password_reset(self).deliver_now
   end
+  
 
   
   
