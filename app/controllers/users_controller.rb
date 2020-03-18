@@ -64,13 +64,6 @@ class UsersController < ApplicationController
                                   :phone_number, :sex)
    end
    
-   def logged_in_users
-     if not logged_in?
-       store_location
-       flash[:danger] = "ログインしてください。"
-       redirect_to login_url
-     end
-   end
    
    
    # 正しいユーザーかテスト
