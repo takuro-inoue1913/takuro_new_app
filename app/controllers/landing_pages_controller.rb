@@ -1,6 +1,6 @@
 class LandingPagesController < ApplicationController
   def home
-    @micropost = current_user.micropost.bulid if logged_in?
+    @micropost = current_user.microposts.build if logged_in?
   end
 
   def help
