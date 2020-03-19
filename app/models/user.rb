@@ -94,6 +94,11 @@ class User < ApplicationRecord
   
   
   
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+  
+  
   private
     
     def downcase_email
