@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find(params[:id])
+    @user.image.cache! unless @user.image.blank?
   end
   
   
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
      params.require(:user).permit(:name, :username, :email,
                                   :password, :password_confirmation,
                                   :webpage , :self_introduction,
-                                  :phone_number, :sex, :image)
+                                  :phone_number, :sex, :image, :image_cache)
    end
    
    
