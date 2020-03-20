@@ -5,6 +5,12 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
+        <% if @user.image? %>
+　　      <%= image_tag @user.image.thumb.url %>
+　      <% else %>
+　　      <%= image_tag("noimage.gif", alt: "プロフィール画像未登録") %>
+　      <% end %>
+        
         <%= @user.name %>
         <%= @user.username %>
         <%= @user.email %>
