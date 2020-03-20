@@ -4,4 +4,7 @@
     <%= f.text_area :content, placeholder: "Cooking recipes..." %>
   </div>
   <%= f.submit "投稿する", class: "btn btn-warning btn-lg" %>
+   <span class="picture">
+    <%= f.file_field :picture %>
+   </span>
 <% end %>
