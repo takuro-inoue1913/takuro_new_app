@@ -8,6 +8,11 @@
         
         <%= render 'shared/error_messages', object: f.object %>
         
+        <%= f.label :image %>
+　      <%= image_tag @user.image.thumb.url if @user.image? %>
+      　<%= f.file_field :image %>
+　      <%= f.hidden_field :image_cache %>
+        
         <%= f.label :name %>
         <%= f.text_field :name, class: "form_control" %>
         
