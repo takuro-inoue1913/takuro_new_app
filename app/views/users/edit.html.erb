@@ -8,6 +8,9 @@
         
         <%= render 'shared/error_messages', object: f.object %>
         
+        <%= f.label :image, "プロフィール画像" %>
+　　    <%= f.file_field :image, class: 'form-control' %>
+        
         <%= f.label :name %>
         <%= f.text_field :name, class: "form_control" %>
         
