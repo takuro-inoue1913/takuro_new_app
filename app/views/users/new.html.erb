@@ -8,6 +8,7 @@
      
       <%= f.label :image, "プロフィール画像" %>
 　　  <%= f.file_field :image, class: 'form-control' %>
+　　  <%= f.hidden_field :image_cache %>
 　　  
       <%= f.label :username, "User Name (ローマ字入力)" %>
       <%= f.text_field :username, class: 'form-control' %>

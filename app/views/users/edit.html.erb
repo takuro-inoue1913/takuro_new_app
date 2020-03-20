@@ -9,7 +9,9 @@
         <%= render 'shared/error_messages', object: f.object %>
         
         <%= f.label :image, "プロフィール画像" %>
-　　    <%= f.file_field :image, class: 'form-control' %>
+        <%= image_tag @user.image.thumb.url, size: '100x100' if @user.image? %>
+        <%= f.file_field :image, class: 'form-control' %>
+　　    <%= f.hidden_field :image_cache, class: 'form-control' %>
         
         <%= f.label :name %>
         <%= f.text_field :name, class: "form_control" %>
@@ -52,9 +54,5 @@
         <%= f.submit "変更する！", class: "btn btn-warning btn-lg" %>
         <% end %>
         
-      <div class="gravatar_edit">
-       <%= gravatar_for @user %>
-       <a href="http://gravatar.com/emails" target="_blank">change</a>
-      </div>
     </div>
 </div>
