@@ -1,3 +1,5 @@
+<h1><%= current_user.name %></h1>
+
 <% if current_user.image? %>
 　　<%= image_tag current_user.image.thumb.url, size: '200x200' %>
 <% else %>
@@ -5,6 +7,5 @@
 <% end %>
 
 
-<h1><%= current_user.name %></h1>
 <span><%= link_to "投稿一覧", current_user %></span>
 <span><%= pluralize(current_user.microposts.count, " 投稿") %></span>
