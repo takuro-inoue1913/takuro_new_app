@@ -142,4 +142,6 @@ class UserTest < ActiveSupport::TestCase
     michael.unfollow(archer)
     assert_not michael.following?(archer)
   end
+  
+  
 end
