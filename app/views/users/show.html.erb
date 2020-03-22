@@ -14,18 +14,18 @@
 　  <section class="stats">
         <%= render 'shared/stats' %>
     </section>
-　      
-        <%= @user.name %>
-        <%= @user.username %>
-        <%= @user.email %>
-        <%= @user.webpage %>
-        <%= @user.self_introduction %>
-        <%= @user.phone_number %>
-        <%= @user.sex %>
-     
+    <%= render 'follow_form' if logged_in? %>
+    <section>
+      <ul class="list-group list-group-flush" style="max-width: 400px;">
+        <li class="list-group-item">Name:　　　　<%= @user.name %></li>
+        <li class="list-group-item">UserName:　　<%= @user.username %></li>
+        <li class="list-group-item">Webサイト:　 <%= @user.webpage %></li>
+        <li class="list-group-item">自己紹介:　　<%= @user.self_introduction %></li>
+      </ul>
+    </section>
+        
   </aside>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
