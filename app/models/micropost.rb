@@ -10,6 +10,18 @@ class Micropost < ApplicationRecord
   validate  :picture_size
   
   
+  # マイクロポストをいいねする
+  def iine(user)
+    likes.create(user_id: user.id)
+  end
+
+
+  # マイクロポストのいいねを解除する
+  def uniine(user)
+    likes.find_by(user_id: user.id).destroy
+  end
+  
+  
   private
   
   # アップロードされた画像のサイズをバリデーションする (上限 5MB)

@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :edit, :create, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+  resources :likes,               only: [:create, :destroy]
   
- root 'application#hello'
 end
