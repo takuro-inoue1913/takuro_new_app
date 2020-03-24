@@ -7,7 +7,7 @@
       
         <%= button_tag(class: "btn btn-default btn-xs") do %>
         
-          <%= content_tag :span, "#", class: "glyphicon glyphicon-heart" %>
+          <%= content_tag :span, "#{micropost.likes_count}", class: "glyphicon glyphicon-heart" %>
           
         <% end %>
      <% end %>
@@ -19,7 +19,7 @@
         <div><%= hidden_field_tag :micropost_id, micropost.id %></div>
         
         <%= button_tag(class: "btn btn-default btn-xs") do %>
-          <%= content_tag :span, "#", class: "glyphicon glyphicon-heart-empty" %>
+          <%= content_tag :span, "#{micropost.likes_count}", class: "glyphicon glyphicon-heart-empty" %>
         <% end %>
         
       <% end %>
