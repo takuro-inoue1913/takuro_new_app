@@ -16,8 +16,10 @@ class User < ApplicationRecord
     # == @user.passive_relationships.map(&:follower)
     
     has_many :microposts, dependent: :destroy
-    
+
     has_many :likes, dependent: :destroy
+    
+    has_many :comments,  dependent: :destroy
     
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email
