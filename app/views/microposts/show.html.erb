@@ -21,10 +21,35 @@
 　     <% else %>
 　       <%= link_to gravatar_for(comment.user, size: 50), comment.user %>　
      　<% end %>
-       <p><%= link_to "#{comment.user.name}" , @user %>: <%= comment.body %></p>
-       
+       <p><%= link_to "#{comment.user.name}" , @user %>: <%= comment.body %>
          <span> <%= image_tag comment.picture.url if comment.picture?%></span>
-         <span><%= link_to "x" , @micropost.comment, method: :delete if current_user?(comment.user) %></span></p>
+         <span><%= link_to "x" , [@micropost,comment] , method: :delete if current_user?(comment.user) %></span>
+       </p> 
        <hr/>
      <% end %>
 </div>
+
+<div class="comment-form">
+  
+      <%= form_for([@comment, @micropost]) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+   <div class="field">
+      <%= f.text_area :body, placeholder: "Send comment..." %>
+   </div>
+      <%= f.submit "コメント", class: "btn btn-primary" %>
+   <span class="picture">
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+   </span>
+      <% end %>
+
+  <script type="text/javascript">
+    $('#micropost_picture').bind('change', function() {
+      var size_in_megabytes = this.files[0].size/500/500;
+      if (size_in_megabytes > 5) {
+        alert('Maximum file size is 5MB. Please choose a smaller file.');
+      }
+    });
+  </script>
+  
+  
+</div> 
