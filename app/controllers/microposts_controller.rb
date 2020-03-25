@@ -6,7 +6,8 @@ class MicropostsController < ApplicationController
   
   def show 
     @micropost = Micropost.find(params[:id])
-    @comment   = Comment.new
+    @comment = Comment.new
+    @user = User.find_by(id: @micropost.user_id)
   end
   
   
