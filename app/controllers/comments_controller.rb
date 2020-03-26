@@ -2,17 +2,19 @@ class CommentsController < ApplicationController
     
     
   def create
-      
-  @micropost = Micropost.find(params[:micropost_id])
-  @comment = @micropost.comments.build(comment_params)
-  @comment.user = current_user
+    @micropost = Micropost.find(params[:micropost_id]) 
+    @comment = @micropost.comments.build(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
+      flash[:success] = '投稿にコメントしました。'
       redirect_to micropost_path(@micropost)
     else
-      render "microposts/show"
+      @micropost = Micropost.find(params[:micropost_id]) 
+      flash.now[:danger] = '投稿へのコメントに失敗しました。'
+      render 'microposts/show'
     end
-
   end
+
 
   def destroy
     @comment = Comment.find_by(id: params[:id])
