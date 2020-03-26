@@ -9,7 +9,9 @@
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   
   <span class="content"><%= micropost.content %>
+  <%= link_to micropost_path(micropost) do %>
   <%= image_tag micropost.picture.url if micropost.picture? %>
+  <% end %>
   </span>
   
   <span class="timestamp">
