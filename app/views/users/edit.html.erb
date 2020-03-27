@@ -45,6 +45,11 @@
          </div>
         </div>
         
+         <%= f.label :follow_notification, class:"checkbox inline" do %>
+         <%= f.check_box :follow_notification %>
+           <span>Send email when other users follow or unfollow you</span>
+         <% end %>
+        
         <%= f.label :password %>
         <%= f.password_field :password, class: "form_control" %>
         
