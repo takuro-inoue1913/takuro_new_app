@@ -26,6 +26,10 @@ class User < ApplicationRecord
     before_create :create_activation_digest
     mount_uploader :image, ImageUploader
     
+    scope :search_by_keyword, -> (keyword) {
+    where("users.name LIKE :keyword", keyword: "%#{sanitize_sql_like(keyword)}%") if keyword.present?
+    }
+    
     validates :name,  presence: true, length:{ maximum: 30 }
     
     validates :username,  presence: true, length:{ maximum: 30 }
