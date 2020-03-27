@@ -133,11 +133,13 @@ class User < ApplicationRecord
   def follow(other_user)
     following << other_user
     # active_relationships.create(followed_id: other_user.id)
+    Relationship.send_follow_email(other_user, self)
   end
 
   # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
+    Relationship.send_unfollow_email(other_user, self)
   end
 
   # 現在のユーザーがフォローしてたらtrueを返す
