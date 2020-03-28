@@ -418,3 +418,13 @@ span.picture {
   }
 }
 
+div.modal-body p#modal-img {
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+div.modal-body p img {
+  width: 250px;
+  height: auto;
+  margin: 0 0 30px 0;
+}

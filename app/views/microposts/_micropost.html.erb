@@ -8,18 +8,48 @@
   
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   
-  <span class="content"><%= micropost.content %>
-  <%= link_to micropost_path(micropost) do %>
-  <%= image_tag micropost.picture.url if micropost.picture? %>
-  <% end %>
-  </span>
   
+  <span class="content"><%= micropost.content %></span>
+  
+  
+<button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+  <%= image_tag micropost.picture.url if micropost.picture? %>
+</button>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+ 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= micropost.content %></h4>
+      </div>
+      <div class="modal-body">
+        <p id="modal-img"><%= image_tag micropost.picture.url if micropost.picture? %></p>
+        
+           <p><% micropost.comments.each do |comment| %>
+           <%= link_to "#{comment.user.name}" , @user %>: <%= comment.body %><br>
+           <% end %>
+           </p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+ 
+  </div>
+</div>
+
   <span class="timestamp">
     <%= time_ago_in_words(micropost.created_at) %>前に投稿済み
+    <%= link_to "コメントする", micropost_path(micropost) %>
     <% if @micropost %>
-      <%= link_to "削除する", micropost, method: :delete,
+      <%= link_to "削除", micropost, method: :delete,
                                        data: { confirm: "この投稿を削除しますか？" } %>
     <% end %>
   </span>
-      <%= render "likes/like", micropost: micropost %>
+     <%= render "likes/like", micropost: micropost %>
 </li>
