@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-6">
     <section class="user_info">
       <h1>
         <% if @user.image? %>
@@ -11,6 +11,8 @@
 　      <% end %>
 　    </h1>
     </section>
+ </aside>
+   <aside class="col-md-6">
 　  <section class="stats">
         <%= render 'shared/stats' %>
     </section>
@@ -23,14 +25,15 @@
         <li class="list-group-item">自己紹介:　　<%= @user.self_introduction %></li>
       </ul>
     </section>
+  </aside>
+</div>
     
     <strong class="stat">
       <%= current_user.microposts.group(:picture).count { |i| i != nil } %>
        Picture
     </string>
         
-  </aside>
-  <div class="col-md-8">
+  <div>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
@@ -39,6 +42,5 @@
       <%= will_paginate @microposts %>
     <% end %>
   </div>
-</div>
 
 
