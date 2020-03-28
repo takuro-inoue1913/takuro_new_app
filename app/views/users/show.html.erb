@@ -23,6 +23,11 @@
         <li class="list-group-item">自己紹介:　　<%= @user.self_introduction %></li>
       </ul>
     </section>
+    
+    <strong class="stat">
+      <%= current_user.microposts.group(:picture).count { |i| i != nil } %>
+       Picture
+    </string>
         
   </aside>
   <div class="col-md-8">
