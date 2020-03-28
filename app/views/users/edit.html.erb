@@ -47,14 +47,8 @@
         
          <%= f.label :follow_notification, class:"checkbox inline" do %>
          <%= f.check_box :follow_notification %>
-           <span>Send email when other users follow or unfollow you</span>
+           <span>フォロー通知を受け取る</span>
          <% end %>
-        
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "form_control" %>
-        
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, class: "form_control" %>
         
         <%= f.submit "変更する！", class: "btn btn-warning btn-lg" %>
         <% end %>
