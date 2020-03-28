@@ -8,13 +8,23 @@
         　  <%= link_to gravatar_for(@micropost.user, size: 50), @micropost.user %>　
         　<% end %>
           
-          <span class="user"><%= link_to "#{@micropost.user.name}", @micropost.user %></span>
+          <span><%= link_to "#{@micropost.user.name}", @micropost.user %></span>
           
-          <span class="content"><%= @micropost.content %>
-            <%= image_tag @micropost.picture.url if @micropost.picture? %>
-          </span>
+          <ul>
+            <li id="user-content"><%= @micropost.content %></li>
+            <li id="user-img"><%= image_tag @micropost.picture.url if @micropost.picture? %></li>
+          </ul>
+
+            <%= form_for([@micropost, @comment]) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+              <div class="field">
+                <%= f.text_area :body, placeholder: "Send comment..." %>
+              </div>
+                <%= f.submit "コメント", class: "btn btn-warning btn-lg" %>
+                <% end %>
     
-      </div>
+        </div>
+        
       <div class="col-md-6">  
          <h3>Comments</h3>
            <% @micropost.comments.each do |comment| %>
@@ -28,15 +38,7 @@
              </p> 
              <hr/>
            <% end %>
-        
-            <%= form_for([@micropost, @comment]) do |f| %>
-            
-              <%= render 'shared/error_messages', object: f.object %>
-          <div class="field">
-            <%= f.text_area :body, placeholder: "Send comment..." %>
-          </div>
-            <%= f.submit "コメント", class: "btn btn-warning btn-lg" %>
-            <% end %>
+           
         </div>
   </div>
 </div>
