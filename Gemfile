@@ -14,6 +14,7 @@ gem 'mini_magick',             '4.7.0'
 gem 'counter_culture', '~> 1.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
