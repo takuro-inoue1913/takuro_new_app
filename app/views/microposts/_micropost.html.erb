@@ -12,36 +12,46 @@
   <p class="content"><%= micropost.content %></p>
   
   
-<button type="button" class="btn" data-toggle="modal" data-target="#myModal">
-  <%= image_tag micropost.picture.url if micropost.picture? %>
-</button>
+  
+<main id="main">
+  <article>
+    <section id="modal-item">
+      <%= image_tag micropost.picture.url, size: '300x300' if micropost.picture? %>
+    </section>
+  </article>
+</main>
+<div id="graydisplay"></div>
+
+
+
+<!--<button type="button" class="btn" data-toggle="modal" data-target="#myModal">-->
+<!--  <%= image_tag micropost.picture.url if micropost.picture? %>-->
+<!--</button>-->
  
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<!--<div id="myModal" class="modal fade" role="dialog">-->
+<!--  <div class="modal-dialog">-->
  
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><%= micropost.content %></h4>
-      </div>
-      <div class="modal-body">
-        <p id="modal-img"><%= image_tag micropost.picture.url if micropost.picture? %></p>
-        
-           <p><% micropost.comments.each do |comment| %>
-           <%= link_to "#{comment.user.name}" , @user %>: <%= comment.body %><br>
-           <% end %>
-           </p>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-      </div>
-    </div>
+    <!--<div class="modal-content">-->
+    <!--  <div class="modal-header">-->
+    <!--    <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+    <!--    <h4 class="modal-title"><%= micropost.content %></h4>-->
+    <!--  </div>-->
+    <!--  <div class="modal-body">-->
+    <!--    <p id="modal-img"><%= image_tag micropost.picture.url if micropost.picture? %></p>-->
+    <!--       <p><% micropost.comments.each do |comment| %>-->
+    <!--       <%= link_to "#{comment.user.name}" , @user %>: <%= comment.body %><br>-->
+    <!--       <% end %>-->
+    <!--       </p>-->
+    <!--  </div>-->
+    <!--  <div class="modal-footer">-->
+    <!--    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>-->
+    <!--  </div>-->
+    <!--</div>-->
  
-  </div>
-</div>
+<!--  </div>-->
+<!--</div>-->
 
   <span class="timestamp">
     <%= time_ago_in_words(micropost.created_at) %>前に投稿済み
@@ -53,3 +63,20 @@
   </span>
      <%= render "likes/like", micropost: micropost %>
 </li>
+
+
+
+
+
+ <script type="text/javascript">
+   $(function(){
+    $("main section#modal-item").click(function() {
+      $("#graydisplay").html($(this).prop('outerHTML'));
+      $("#graydisplay").fadeIn(500);
+    });
+    $("#graydisplay, #graydisplay img").click(function() {
+      $("#graydisplay").fadeOut(500);
+    });
+  });
+
+</script>
