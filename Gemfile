@@ -14,7 +14,7 @@ gem 'mini_magick',             '4.7.0'
 gem 'counter_culture', '~> 1.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'dotenv-rails'
+
 
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
@@ -26,6 +26,7 @@ gem 'jbuilder',     '2.7.0'
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'byebug',  '9.0.6', platform: :mri
+  gem 'dotenv-rails'
 end
 
 group :development do
