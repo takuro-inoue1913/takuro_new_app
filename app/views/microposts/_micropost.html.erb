@@ -1,10 +1,10 @@
 <li id="micropost-<%= micropost.id %>">
   
   <% if micropost.user.image? %>
-　　<%= image_tag micropost.user.image.thumb.url, size: '50x50' %>
-　<% else %>
-　  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>　
-　<% end %>
+    <%= image_tag micropost.user.image.thumb.url, size: '50x50' %>
+  <% else %>
+    <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>　
+  <% end %>
   
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   

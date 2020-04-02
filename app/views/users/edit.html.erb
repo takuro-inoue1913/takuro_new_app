@@ -11,7 +11,7 @@
         <%= f.label :image, "プロフィール画像" %>
         <%= image_tag @user.image.thumb.url, size: '100x100' if @user.image? %>
         <%= f.file_field :image, class: 'form-control' %>
-　　    <%= f.hidden_field :image_cache, class: 'form-control' %>
+        <%= f.hidden_field :image_cache, class: 'form-control' %>
         
         <%= f.label :name %>
         <%= f.text_field :name, class: "form_control" %>

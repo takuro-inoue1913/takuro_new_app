@@ -1,9 +1,9 @@
 
 
 <% if current_user.image? %>
-　　<%= image_tag current_user.image.thumb.url, size: '200x200' %>
+  <%= image_tag current_user.image.thumb.url, size: '200x200' %>
 <% else %>
-　  <%= link_to gravatar_for(current_user, size: 50), current_user %> 
+  <%= link_to gravatar_for(current_user, size: 50), current_user %> 
 <% end %>
 
 <h1 class="text-right" id="user_name"><%= current_user.name %></h1>

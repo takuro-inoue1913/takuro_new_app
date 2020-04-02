@@ -1,8 +1,8 @@
 <li>
   <% if user.image? %>
-　　<%= image_tag user.image.thumb.url, size: '50x50' %>
+    <%= image_tag user.image.thumb.url, size: '50x50' %>
   <% else %>
-　  <%= gravatar_for user, size: 50 %> 
+    <%= gravatar_for user, size: 50 %> 
   <% end %>
   
   <%= link_to user.name, user %>

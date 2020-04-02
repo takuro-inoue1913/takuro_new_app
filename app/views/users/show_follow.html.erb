@@ -4,10 +4,10 @@
     
     <section class="user_info">
       <% if @user.image? %>
-　　    <%= image_tag @user.image, size: '200x200' %>
-　    <% else %>
-　　    <%= gravatar_for @user %>
-　    <% end %>
+      <%= image_tag @user.image, size: '200x200' %>
+      <% else %>
+      <%= gravatar_for @user %>
+      <% end %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>Microposts:</b> <%= @user.microposts.count %></span>
@@ -23,11 +23,11 @@
           <% @users.each do |user| %>
           <ol> 
             <% if user.image? %>
-　　          <%= image_tag user.image, size: '60x60' %>
-　          <% else %>
-　　          <%= link_to gravatar_for(user, size: 60), user %>
-　          <% end %>
-　　      </ol>
+              <%= image_tag user.image, size: '60x60' %>
+            <% else %>
+            <%= link_to gravatar_for(user, size: 60), user %>
+            <% end %>
+         </ol>
           <% end %>
         </div>
       <% end %>
