@@ -43,7 +43,7 @@ class User < ApplicationRecord
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
    has_secure_password
-    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true, on: :facebook_login
+    validates :password, presence: false, length: { minimum: 6 }, allow_nil: true, on: :facebook_login
     
     
     # 渡された文字列のハッシュ値を返す
@@ -154,18 +154,19 @@ class User < ApplicationRecord
 
 
   def self.from_omniauth(auth)
+    # emailの提供は必須とする
     user = User.where('email = ?', auth.info.email).first
-    if user.blank?
-       user = User.new
-    end
+   if user.blank?
+     user = User.new
+   end
     user.uid   = auth.uid
-    user.name      = auth.info.name
-    user.username  = auth.info.name
+    user.name  = auth.info.name
     user.email = auth.info.email
-    user.oauth_token = auth.credentials.token
+    user.icon  = auth.info.image
+    user.oauth_token      = auth.credentials.token
     user.oauth_expires_at = Time.at(auth.credentials.expires_at)
     user
-  end
+  end 
   
   
   
