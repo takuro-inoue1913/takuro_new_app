@@ -31,7 +31,7 @@
         
   <div>
     <% if @user.microposts.any? %>
-      <h3>Pictures  <%= @user.microposts.group(:picture).count { |i| i != nil } %></h3>
+      <h3>Pictures</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

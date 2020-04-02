@@ -3,10 +3,10 @@
       <div class="col-md-6" id="micropost-#{@micropost.id}">
       
           <% if @micropost.user.image? %>
-        　　<%= image_tag @micropost.user.image.thumb.url, size: '50x50' %>
-        　<% else %>
-        　  <%= link_to gravatar_for(@micropost.user, size: 50), @micropost.user %>　
-        　<% end %>
+            <%= image_tag @micropost.user.image.thumb.url, size: '50x50' %>
+          <% else %>
+            <%= link_to gravatar_for(@micropost.user, size: 50), @micropost.user %>　
+          <% end %>
           
           <span><%= link_to "#{@micropost.user.name}", @micropost.user %></span>
           
@@ -29,10 +29,10 @@
          <h3>Comments</h3>
            <% @micropost.comments.each do |comment| %>
              <% if @micropost.user.image? %>
-      　　     <%= image_tag @micropost.user.image.thumb.url, size: '50x50' %>
-      　     <% else %>
-      　       <%= link_to gravatar_for(comment.user, size: 50), comment.user %>　
-           　<% end %>
+              <%= image_tag @micropost.user.image.thumb.url, size: '50x50' %>
+             <% else %>
+               <%= link_to gravatar_for(comment.user, size: 50), comment.user %>　
+             <% end %>
              <p><%= link_to "#{comment.user.name}" , @user %>: <%= comment.body %>
                <span><%= link_to "削除" , [@micropost,comment] , method: :delete if @micropost %></span>
              </p> 
