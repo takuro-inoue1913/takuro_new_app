@@ -86,7 +86,7 @@ class User < ApplicationRecord
 
   # アカウント有効化
   def activate
-    update_attribute(:activated,    true)
+    update_attribute(:activated,true)
     update_attribute(:activated_at, Time.zone.now)
   end
   
