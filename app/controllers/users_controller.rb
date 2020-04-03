@@ -20,31 +20,14 @@ class UsersController < ApplicationController
   end
   
   def create
-
-    if env['omniauth.auth'].present?
-      # Facebookログイン
-      @user  = User.from_omniauth(env['omniauth.auth'])
-      result = @user.save(context: :facebook_login)
-      fb       = "Facebook"
-    else
-       # 通常サインアップ
-      @user = User.new(user_params)
-      result = @user.save
-      fb   = ""
-    end
-
-    if result
+    @user = User.new(user_params)
+    if @user.save
       @user.send_activation_email
       flash[:info] = "入力されたアドレスにMailを送りました。Mailのリンクをクリックして登録完了してください"
       redirect_to root_url
     else
-      if fb.present?
-        redirect_to auth_failure_path
-      else
-        render 'new'
-      end
+      render 'new'
     end
-    
   end
   
   
@@ -85,11 +68,29 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+
+
+
+  def facebook_login
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+      result = @user.save(context: :facebook_login)
+      if result
+        log_in @user
+        redirect_to @user
+      else
+        redirect_to auth_failure_path
+      end
+  end
   
+  #認証に失敗した際の処理
+  def auth_failure 
+    @user = User.new
+    render 'new'
+  end
   
 
-  
-  
+
+
   private
   
    def user_params
